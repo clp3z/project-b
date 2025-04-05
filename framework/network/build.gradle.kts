@@ -47,6 +47,7 @@ dependencies {
 
     // Modules
     implementation(project(":entity"))
+    implementation(project(":common"))
 
     // Hilt
     implementation(libs.google.dagger.hilt.android)

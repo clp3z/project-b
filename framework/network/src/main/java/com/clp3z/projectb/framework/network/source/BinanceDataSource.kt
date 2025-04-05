@@ -6,5 +6,5 @@ import com.clp3z.projectb.entity.Record
 
 interface BinanceDataSource {
 
-    suspend fun getBitcoinRecord(): Either<Error, Record>
+    suspend fun getBitcoinRecord(bitcoinSymbol: String): Either<Error, Record>
 }

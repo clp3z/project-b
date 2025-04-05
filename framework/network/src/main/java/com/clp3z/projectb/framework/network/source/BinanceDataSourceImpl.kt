@@ -13,18 +13,15 @@ class BinanceDataSourceImpl @Inject constructor(
     private val binanceService: BinanceService
 ) : BinanceDataSource {
 
-    companion object {
-        const val BITCOIN_SYMBOL = "BTCUSDT"
-    }
-
-    override suspend fun getBitcoinRecord(): Either<Error, Record> = tryCall(
-        execute = {
-            binanceService
-                .getCryptoCurrencyPrice(BITCOIN_SYMBOL)
-                .toRecord()
-        },
-        toError = {
-            it.toError()
-        }
-    )
+    override suspend fun getBitcoinRecord(bitcoinSymbol: String): Either<Error, Record> =
+        tryCall(
+            execute = {
+                binanceService
+                    .getCryptoCurrencyPrice(bitcoinSymbol)
+                    .toRecord()
+            },
+            toError = {
+                it.toError()
+            }
+        )
 }

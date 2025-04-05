@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+android {
+    namespace = "com.clp3z.projectb.common"
+}
+
 dependencies {
 
     // Modules

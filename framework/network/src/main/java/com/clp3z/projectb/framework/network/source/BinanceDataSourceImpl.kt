@@ -1,6 +1,7 @@
 package com.clp3z.projectb.framework.network.source
 
 import arrow.core.Either
+import com.clp3z.projectb.common.time.TimeProvider
 import com.clp3z.projectb.common.tryCall
 import com.clp3z.projectb.entity.Error
 import com.clp3z.projectb.entity.Record
@@ -9,8 +10,9 @@ import com.clp3z.projectb.framework.network.toError
 import com.clp3z.projectb.framework.network.toRecord
 import javax.inject.Inject
 
-class BinanceDataSourceImpl @Inject constructor(
-    private val binanceService: BinanceService
+internal class BinanceDataSourceImpl @Inject constructor(
+    private val binanceService: BinanceService,
+    private val timeProvider: TimeProvider
 ) : BinanceDataSource {
 
     override suspend fun getBitcoinRecord(bitcoinSymbol: String): Either<Error, Record> =
@@ -18,7 +20,7 @@ class BinanceDataSourceImpl @Inject constructor(
             execute = {
                 binanceService
                     .getCryptoCurrencyPrice(bitcoinSymbol)
-                    .toRecord()
+                    .toRecord(timeProvider.getTimestamp())
             },
             toError = {
                 it.toError()

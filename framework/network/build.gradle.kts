@@ -15,6 +15,7 @@ dependencies {
     // Modules
     implementation(project(":entity"))
     implementation(project(":common"))
+    testImplementation(project(":test"))
 
     // Hilt
     implementation(libs.google.dagger.hilt.android)
@@ -31,6 +32,9 @@ dependencies {
 
     // Retrofit
     implementation(libs.bundles.squareup.retrofit)
+
+    // Test
+    testImplementation(libs.bundles.local.tests)
 }
 
 kapt {

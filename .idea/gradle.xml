@@ -22,6 +22,7 @@
             <option value="$PROJECT_DIR$/framework/theme" />
             <option value="$PROJECT_DIR$/framework/ui" />
             <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/test" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

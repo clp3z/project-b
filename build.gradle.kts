@@ -5,9 +5,9 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
-    alias(libs.plugins.jetbrains.kotlin.kapt) apply false
     alias(libs.plugins.google.dagger.hilt) apply false
     alias(libs.plugins.jetbrains.kotlin.serialization) apply false
+    alias(libs.plugins.google.devtools.ksp) apply false
 }
 
 subprojects {
@@ -36,6 +36,14 @@ subprojects {
                 compileOptions {
                     sourceCompatibility = JavaVersion.VERSION_17
                     targetCompatibility = JavaVersion.VERSION_17
+                }
+
+                packaging {
+                    resources {
+                        excludes += "/META-INF/{AL2.0,LGPL2.1}"
+                        merges += "META-INF/LICENSE.md"
+                        merges += "META-INF/LICENSE-notice.md"
+                    }
                 }
             }
 

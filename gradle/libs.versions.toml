@@ -7,8 +7,8 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
-composeBom = "2024.04.01"
-composeNavigation = "2.8.6"
+composeBom = "2025.03.01"
+composeNavigation = "2.8.9"
 jetbrainsKotlinJvm = "2.0.0"
 hilt = "2.50"
 hiltNavigation = "1.2.0"
@@ -99,8 +99,7 @@ kotlinx-coroutines = [
 
 androidx-room = [
     "androidx-room-runtime",
-    "androidx-room-ktx",
-    "androidx-room-compiler"
+    "androidx-room-ktx"
 ]
 
 squareup-retrofit = [

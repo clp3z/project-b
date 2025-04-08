@@ -1,6 +1,8 @@
 package com.clp3z.projectb.entity
 
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CurrencyCandle(
     val id: Long,
     val openingTime: Long,
@@ -8,5 +10,6 @@ data class CurrencyCandle(
     val closeTime: Long,
     val closePrice: Double,
     val highPrice: Double,
-    val lowPrice: Double
+    val lowPrice: Double,
+    val currency: String
 )

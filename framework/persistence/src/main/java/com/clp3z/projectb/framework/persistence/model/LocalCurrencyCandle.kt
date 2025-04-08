@@ -1,5 +1,6 @@
 package com.clp3z.projectb.framework.persistence.model
 
+import android.icu.util.Currency
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -11,5 +12,6 @@ data class LocalCurrencyCandle(
     val closeTime: Long,
     val closePrice: Double,
     val highPrice: Double,
-    val lowPrice: Double
+    val lowPrice: Double,
+    val currency: String
 )

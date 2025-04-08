@@ -13,15 +13,15 @@ interface BinanceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCurrencyCandles(candles: List<LocalCurrencyCandle>)
 
-    @Query("SELECT * FROM LocalCurrencyCandle WHERE openingTime >= :startOfDay AND openingTime < :endOfDay ORDER BY openingTime ASC")
-    fun getCurrencyCandles(startOfDay: Long, endOfDay: Long): Flow<List<LocalCurrencyCandle>>
+    @Query("SELECT * FROM LocalCurrencyCandle WHERE currency = :currency AND openingTime >= :startOfDay AND openingTime < :endOfDay ORDER BY openingTime ASC")
+    fun getCurrencyCandles(currency: String, startOfDay: Long, endOfDay: Long): Flow<List<LocalCurrencyCandle>>
 
-    @Query("SELECT * FROM LocalCurrencyCandle WHERE openingTime >= :startOfDay AND openingTime < :endOfDay ORDER BY highPrice DESC LIMIT 1")
-    fun getHighestPriceCandle(startOfDay: Long, endOfDay: Long): Flow<LocalCurrencyCandle>
+    @Query("SELECT * FROM LocalCurrencyCandle WHERE currency = :currency AND openingTime >= :startOfDay AND openingTime < :endOfDay ORDER BY highPrice DESC LIMIT 1")
+    fun getHighestPriceCandle(currency: String, startOfDay: Long, endOfDay: Long): Flow<LocalCurrencyCandle>
 
-    @Query("SELECT * FROM LocalCurrencyCandle WHERE openingTime >= :startOfDay AND openingTime < :endOfDay ORDER BY lowPrice ASC LIMIT 1")
-    fun getLowestPriceCandle(startOfDay: Long, endOfDay: Long): Flow<LocalCurrencyCandle>
+    @Query("SELECT * FROM LocalCurrencyCandle WHERE currency = :currency AND openingTime >= :startOfDay AND openingTime < :endOfDay ORDER BY lowPrice ASC LIMIT 1")
+    fun getLowestPriceCandle(currency: String, startOfDay: Long, endOfDay: Long): Flow<LocalCurrencyCandle>
 
-    @Query("SELECT AVG(closePrice) FROM LocalCurrencyCandle WHERE openingTime >= :startOfDay AND openingTime < :endOfDay")
-    fun getAveragePrice(startOfDay: Long, endOfDay: Long): Flow<Double>
+    @Query("SELECT AVG(closePrice) FROM LocalCurrencyCandle WHERE currency = :currency AND openingTime >= :startOfDay AND openingTime < :endOfDay")
+    fun getAveragePrice(currency: String, startOfDay: Long, endOfDay: Long): Flow<Double>
 }
